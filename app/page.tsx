@@ -1,69 +1,256 @@
-import Image from "next/image";
+const navigation = [
+  { icon: "▦", label: "Dashboard", active: true },
+  { icon: "◉", label: "Inbox" },
+  { icon: "♙", label: "Contacts" },
+  { icon: "✦", label: "Campaigns" },
+  { icon: "⚙", label: "Automations" },
+  { icon: "▤", label: "Templates" },
+  { icon: "◒", label: "Analytics" },
+  { icon: "₹", label: "Billing" },
+  { icon: "◎", label: "Integrations" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="min-h-screen bg-slate-50 text-slate-900">
+      <div className="flex min-h-screen">
+
+        {/* Sidebar */}
+        <aside className="hidden w-64 flex-col border-r border-slate-200 bg-white md:flex">
+
+          <div className="flex h-20 items-center border-b border-slate-200 px-6">
+            <div>
+              <div className="text-xl font-bold tracking-tight">
+                Otera<span className="text-orange-500"> Connect</span>
+              </div>
+              <div className="mt-0.5 text-xs text-slate-400">
+                Business Communication
+              </div>
+            </div>
+          </div>
+
+          <nav className="flex-1 px-3 py-6">
+            <p className="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Workspace
+            </p>
+
+            <div className="space-y-1">
+              {navigation.map((item) => (
+                <button
+                  key={item.label}
+                  className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                    item.active
+                      ? "bg-orange-50 text-orange-600"
+                      : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                  }`}
+                >
+                  <span className="flex h-7 w-7 items-center justify-center text-base">
+                    {item.icon}
+                  </span>
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </nav>
+
+          <div className="border-t border-slate-200 p-4">
+            <div className="flex items-center gap-3 rounded-xl p-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 text-sm font-semibold text-white">
+                O
+              </div>
+
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold">
+                  Otera Admin
+                </p>
+                <p className="truncate text-xs text-slate-400">
+                  Administrator
+                </p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Area */}
+        <section className="flex min-w-0 flex-1 flex-col">
+
+          <header className="flex h-20 items-center justify-between border-b border-slate-200 bg-white px-6">
+            <div>
+              <h1 className="text-xl font-semibold">
+                Dashboard
+              </h1>
+              <p className="text-sm text-slate-400">
+                Welcome to Otera Connect
+              </p>
+            </div>
+
+            <div className="flex items-center gap-4">
+              <button className="rounded-xl border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50">
+                + New Campaign
+              </button>
+
+              <div className="hidden h-9 w-px bg-slate-200 sm:block" />
+
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500 font-semibold text-white">
+                O
+              </div>
+            </div>
+          </header>
+
+          {/* Dashboard Content */}
+          <div className="flex-1 overflow-auto p-6 lg:p-8">
+
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold tracking-tight">
+                Good morning, Partner 👋
+              </h2>
+
+              <p className="mt-1 text-sm text-slate-500">
+                Here&apos;s what&apos;s happening with your communication today.
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <p className="text-sm font-medium text-slate-500">
+                  Total Contacts
+                </p>
+
+                <div className="mt-3 flex items-end justify-between">
+                  <p className="text-3xl font-bold">0</p>
+                  <span className="text-xs font-medium text-slate-400">
+                    Contacts
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <p className="text-sm font-medium text-slate-500">
+                  Messages Sent
+                </p>
+
+                <div className="mt-3 flex items-end justify-between">
+                  <p className="text-3xl font-bold">0</p>
+                  <span className="text-xs font-medium text-slate-400">
+                    This month
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <p className="text-sm font-medium text-slate-500">
+                  Campaigns
+                </p>
+
+                <div className="mt-3 flex items-end justify-between">
+                  <p className="text-3xl font-bold">0</p>
+                  <span className="text-xs font-medium text-slate-400">
+                    Active
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-5">
+                <p className="text-sm font-medium text-slate-500">
+                  Conversations
+                </p>
+
+                <div className="mt-3 flex items-end justify-between">
+                  <p className="text-3xl font-bold">0</p>
+                  <span className="text-xs font-medium text-slate-400">
+                    Open
+                  </span>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Main Panels */}
+            <div className="mt-6 grid gap-6 lg:grid-cols-3">
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 lg:col-span-2">
+
+                <div>
+                  <h3 className="font-semibold">
+                    Recent Activity
+                  </h3>
+
+                  <p className="mt-1 text-sm text-slate-400">
+                    Your latest communication activity will appear here.
+                  </p>
+                </div>
+
+                <div className="flex min-h-64 items-center justify-center">
+                  <div className="text-center">
+
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-2xl">
+                      ◌
+                    </div>
+
+                    <p className="mt-4 font-medium text-slate-700">
+                      No activity yet
+                    </p>
+
+                    <p className="mt-1 max-w-sm text-sm text-slate-400">
+                      Connect your first communication channel to start
+                      sending and receiving messages.
+                    </p>
+
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Quick Actions */}
+              <div className="rounded-2xl border border-slate-200 bg-white p-6">
+
+                <h3 className="font-semibold">
+                  Quick Actions
+                </h3>
+
+                <div className="mt-5 space-y-3">
+
+                  <button className="w-full rounded-xl border border-slate-200 p-4 text-left transition hover:border-orange-200 hover:bg-orange-50">
+                    <p className="font-medium">
+                      Add Contacts
+                    </p>
+
+                    <p className="mt-1 text-xs text-slate-400">
+                      Import or create customers
+                    </p>
+                  </button>
+
+                  <button className="w-full rounded-xl border border-slate-200 p-4 text-left transition hover:border-orange-200 hover:bg-orange-50">
+                    <p className="font-medium">
+                      Create Campaign
+                    </p>
+
+                    <p className="mt-1 text-xs text-slate-400">
+                      Reach your customers
+                    </p>
+                  </button>
+
+                  <button className="w-full rounded-xl border border-slate-200 p-4 text-left transition hover:border-orange-200 hover:bg-orange-50">
+                    <p className="font-medium">
+                      Connect Channel
+                    </p>
+
+                    <p className="mt-1 text-xs text-slate-400">
+                      RCS, WhatsApp, SMS or Email
+                    </p>
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </main>
   );
 }
